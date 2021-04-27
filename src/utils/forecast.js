@@ -14,29 +14,17 @@ const forecast = (latitude, longitude, callback) => {
     } else {
       callback(
         undefined,
-        "This is currently " +
+        body.current.weather_descriptions[0] +
+          ". It is currently " +
           body.current.temperature +
-          " degress out, There is a " +
+          " degress out. It feels like " +
           body.current.feelslike +
-          " chance"
+          " degress out. The humidity is " +
+          body.current.humidity +
+          "%."
       );
     }
   });
 };
 
 module.exports = forecast;
-
-//get weather
-// const url =
-//   "http://api.weatherstack.com/current?access_key=e7021976345d10048072da73e4e7847d&query=taipei";
-
-// request({ url: url, json: true }, (err, res) => {
-//   if (err) {
-//     console.log("Unable to connect to weather service!");
-//   } else if (res.body.error) {
-//     console.log("Unable to find location!");
-//   } else {
-//     console.log(res.body.current.temperature);
-//     console.log(res.body.current.feelslike);
-//   }
-// });
